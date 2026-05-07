@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate – Joyous Children's Home Kenya</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sun: #F4A724; --earth: #C0622A; --grass: #4A7C3F;
+    --sky: #E8F4F0; --cream: #FDF6EE; --soft: #FAE8D4;
+    --text: #2C1A0E; --muted: #7A5C44; --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--text); }
+  nav { background: var(--white); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07); position: sticky; top: 0; z-index: 100; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon { width: 44px; height: 44px; background: var(--sun); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text); line-height: 1.2; }
+  .logo-text span { display: block; font-size: 0.7rem; font-family: 'Nunito', sans-serif; color: var(--muted); font-weight: 600; letter-spacing: 1px; }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; }
+  nav ul a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+  nav ul a:hover, nav ul a.active { color: var(--earth); }
+  .nav-donate { background: var(--earth); color: var(--white); padding: 0.5rem 1.2rem; border-radius: 25px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+  .section-tag { background: var(--soft); color: var(--earth); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem; }
+
+  /* HERO */
+  .page-hero { background: linear-gradient(135deg, var(--soft) 0%, #F4DCC0 100%); padding: 5rem 2rem 4rem; text-align: center; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--text); margin-bottom: 1rem; }
+  .page-hero p { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+
+  /* IMPACT AMOUNTS */
+  .impact { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .impact h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--text); text-align: center; margin-bottom: 0.5rem; }
+  .impact > p { text-align: center; color: var(--muted); margin-bottom: 3rem; font-size: 1.05rem; }
+  .amounts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+  .amount-card {
+    background: var(--white); border-radius: 18px; padding: 2rem;
+    text-align: center; cursor: pointer; border: 2px solid var(--soft);
+    transition: all 0.25s;
+  }
+  .amount-card:hover, .amount-card.selected {
+    border-color: var(--earth); background: var(--soft);
+    transform: translateY(-4px);
+  }
+  .amount-emoji { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .amount-price { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--earth); font-weight: 700; }
+  .amount-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+  .amount-impact { font-size: 0.85rem; color: var(--grass); font-weight: 600; margin-top: 0.5rem; }
+
+  /* DONATE FORM */
+  .donate-form-section {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; max-width: 1000px; margin: 0 auto;
+    padding: 0 2rem 5rem;
+    align-items: start;
+  }
+  .form-card { background: var(--white); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--soft); }
+  .form-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--text); margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-group input, .form-group select {
+    width: 100%; padding: 0.8rem 1rem;
+    border: 1.5px solid var(--soft); border-radius: 10px;
+    font-family: 'Nunito', sans-serif; font-size: 1rem;
+    color: var(--text); background: var(--cream);
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus {
+    outline: none; border-color: var(--earth);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .frequency-toggle { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .freq-btn {
+    flex: 1; padding: 0.7rem; border: 2px solid var(--soft);
+    border-radius: 10px; background: var(--white); cursor: pointer;
+    font-family: 'Nunito', sans-serif; font-size: 0.95rem;
+    font-weight: 700; color: var(--muted); transition: all 0.2s;
+  }
+  .freq-btn.active { border-color: var(--earth); background: var(--soft); color: var(--earth); }
+  .submit-btn {
+    width: 100%; padding: 1rem; background: var(--earth); color: var(--white);
+    border: none; border-radius: 30px; font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
+    margin-top: 0.5rem;
+  }
+  .submit-btn:hover { background: var(--sun); color: var(--text); }
+  .secure-note { text-align: center; font-size: 0.8rem; color: var(--muted); margin-top: 0.8rem; }
+
+  /* IMPACT SIDEBAR */
+  .impact-sidebar h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--text); margin-bottom: 1.5rem; }
+  .impact-list { list-style: none; }
+  .impact-list li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1rem 0; border-bottom: 1px solid var(--soft);
+  }
+  .impact-list li:last-child { border-bottom: none; }
+  .impact-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .impact-text strong { display: block; color: var(--text); font-size: 0.95rem; }
+  .impact-text span { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+  /* MPESA */
+  .mpesa-section { background: var(--grass); padding: 3.5rem 2rem; text-align: center; }
+  .mpesa-section h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); margin-bottom: 1rem; }
+  .mpesa-section p { color: rgba(255,255,255,0.85); margin-bottom: 2rem; font-size: 1.05rem; }
+  .mpesa-code { background: rgba(255,255,255,0.15); border-radius: 14px; padding: 1.5rem 2.5rem; display: inline-block; margin-bottom: 2rem; }
+  .mpesa-code p { color: var(--white); margin: 0; font-size: 0.85rem; opacity: 0.8; }
+  .mpesa-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--sun); }
+  .paybill-info { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+  .paybill-item { color: var(--white); }
+  .paybill-item strong { display: block; font-size: 1.2rem; color: var(--sun); }
+  .paybill-item span { font-size: 0.85rem; opacity: 0.8; }
+
+  /* OTHER WAYS */
+  .other-ways { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
+  .other-ways h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--text); text-align: center; margin-bottom: 2.5rem; }
+  .ways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .way-card { background: var(--white); border-radius: 16px; padding: 2rem; text-align: center; border-top: 4px solid var(--sun); }
+  .way-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .way-card h3 { color: var(--text); font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .way-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+  footer { background: var(--text); color: #D4B896; padding: 2rem; text-align: center; }
+  footer a { color: var(--sun); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .amounts-grid { grid-template-columns: repeat(2,1fr); }
+    .donate-form-section { grid-template-columns: 1fr; }
+    .ways-grid { grid-template-columns: 1fr; }
+    .page-hero h1 { font-size: 2rem; }
+    nav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🌻</div>
+    <div class="logo-text">Joyous Children's Home <span>Malindi, Kenya</span></div>
+  </a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="children.html">Our Children</a></li>
+    <li><a href="getinvolved.html">Get Involved</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="donate.html" class="nav-donate active">Donate Now</a>
+</nav>
+
+<section class="page-hero">
+  <div class="section-tag">Give the Gift of Joy</div>
+  <h1>Your Donation Changes Lives</h1>
+  <p>Every shilling, every pound, every dollar gives a child in Kenya one more day of safety, nourishment, and hope. It is one of the most powerful things you can do.</p>
+</section>
+
+<!-- IMPACT AMOUNTS -->
+<section class="impact">
+  <h2>Choose Your Impact</h2>
+  <p>See exactly what your donation does for our children.</p>
+  <div class="amounts-grid">
+    <div class="amount-card selected" onclick="selectAmount(this)">
+      <div class="amount-emoji">🍽️</div>
+      <div class="amount-price">KES 500</div>
+      <div class="amount-label">One-time</div>
+      <div class="amount-impact">Feeds a child for a week</div>
+    </div>
+    <div class="amount-card" onclick="selectAmount(this)">
+      <div class="amount-emoji">📚</div>
+      <div class="amount-price">KES 1,500</div>
+      <div class="amount-label">One-time</div>
+      <div class="amount-impact">Provides school supplies</div>
+    </div>
+    <div class="amount-card" onclick="selectAmount(this)">
+      <div class="amount-emoji">👟</div>
+      <div class="amount-price">KES 3,000</div>
+      <div class="amount-label">One-time</div>
+      <div class="amount-impact">Full uniform & shoes</div>
+    </div>
+    <div class="amount-card" onclick="selectAmount(this)">
+      <div class="amount-emoji">🌟</div>
+      <div class="amount-price">KES 5,000</div>
+      <div class="amount-label">Monthly</div>
+      <div class="amount-impact">Sponsors a child fully</div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="donate-form-section">
+    <div class="form-card">
+      <h3>Make Your Donation</h3>
+      <div class="frequency-toggle">
+        <button class="freq-btn active" onclick="setFreq(this)">Give Once</button>
+        <button class="freq-btn" onclick="setFreq(this)">Give Monthly</button>
+      </div>
+      <div class="form-group">
+        <label>Donation Amount (KES)</label>
+        <input type="number" placeholder="Enter amount e.g. 500" id="amount-input" value="500">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Rolleen">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Ndaa">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="rolleen@example.com">
+      </div>
+      <div class="form-group">
+        <label>Phone Number (for M-Pesa)</label>
+        <input type="tel" placeholder="0712 345 678">
+      </div>
+      <div class="form-group">
+        <label>Dedicate this gift to someone (optional)</label>
+        <input type="text" placeholder="In honour of...">
+      </div>
+      <button class="submit-btn">💛 Donate Now via M-Pesa / Card</button>
+      <p class="secure-note">🔒 Secure & encrypted. 100% goes to the children.</p>
+    </div>
+
+    <div class="impact-sidebar">
+      <h3>Your Donation at Work</h3>
+      <ul class="impact-list">
+        <li>
+          <div class="impact-icon">🍽️</div>
+          <div class="impact-text">
+            <strong>Nutrition</strong>
+            <span>3 nutritious meals a day for every child, cooked with love in our kitchen.</span>
+          </div>
+        </li>
+        <li>
+          <div class="impact-icon">📚</div>
+          <div class="impact-text">
+            <strong>Education</strong>
+            <span>School fees, uniforms, books, and tutoring so no child falls behind.</span>
+          </div>
+        </li>
+        <li>
+          <div class="impact-icon">🏥</div>
+          <div class="impact-text">
+            <strong>Healthcare</strong>
+            <span>Regular medical check-ups, dental care, and mental health support.</span>
+          </div>
+        </li>
+        <li>
+          <div class="impact-icon">🎨</div>
+          <div class="impact-text">
+            <strong>Arts & Recreation</strong>
+            <span>Music, football, painting, and drama — because joy is essential too.</span>
+          </div>
+        </li>
+        <li>
+          <div class="impact-icon">🌱</div>
+          <div class="impact-text">
+            <strong>Future Skills</strong>
+            <span>Vocational training for older teens, so they leave Joyous ready to thrive.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MPESA -->
+<section class="mpesa-section">
+  <h2>🇰🇪 Donate via M-Pesa</h2>
+  <p>The easiest way to donate from Kenya. Use our Paybill or Till number directly.</p>
+  <div class="paybill-info">
+    <div class="paybill-item">
+      <strong>522 533</strong>
+      <span>Paybill Number</span>
+    </div>
+    <div class="paybill-item">
+      <strong>9510951</strong>
+      <span>Account Number</span>
+    </div>
+    <div class="paybill-item">
+      <strong>Any Amount</strong>
+      <span>We accept all gifts</span>
+    </div>
+  </div>
+</section>
+
+<!-- OTHER WAYS -->
+<section class="other-ways">
+  <h2>Other Ways to Give</h2>
+  <div class="ways-grid">
+    <div class="way-card">
+      <div class="way-icon">👶</div>
+      <h3>Sponsor a Child</h3>
+      <p>KES 5,000/month sponsors one child completely — education, meals, health, and joy included.</p>
+    </div>
+    <div class="way-card">
+      <div class="way-icon">📦</div>
+      <h3>Donate Goods</h3>
+      <p>Clothes, books, toys, school supplies — physical donations are warmly welcomed at our home.</p>
+    </div>
+    <div class="way-card">
+      <div class="way-icon">🌍</div>
+      <h3>International Transfer</h3>
+      <p>Donate from abroad via bank transfer or our international partners. Contact us for details.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>🌻 Joyous Children's Home, Malindi Kenya &nbsp;|&nbsp; <a href="contact.html">Contact Us</a> &nbsp;|&nbsp; &copy; 2026</p>
+</footer>
+
+<script>
+  function selectAmount(el) {
+    document.querySelectorAll('.amount-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    const price = el.querySelector('.amount-price').textContent.replace('KES ','').replace(',','');
+    document.getElementById('amount-input').value = price;
+  }
+  function setFreq(btn) {
+    document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyous Children's Home – Kenya</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sun: #F4A724;
+    --earth: #C0622A;
+    --grass: #4A7C3F;
+    --sky: #E8F4F0;
+    --cream: #FDF6EE;
+    --soft: #FAE8D4;
+    --text: #2C1A0E;
+    --muted: #7A5C44;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--text); }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon {
+    width: 44px; height: 44px; background: var(--sun);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 22px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text); line-height: 1.2; }
+  .logo-text span { display: block; font-size: 0.7rem; font-family: 'Nunito', sans-serif; color: var(--muted); font-weight: 600; letter-spacing: 1px; }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; }
+  nav ul a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+  nav ul a:hover, nav ul a.active { color: var(--earth); }
+  .nav-donate {
+    background: var(--earth); color: var(--white);
+    padding: 0.5rem 1.2rem; border-radius: 25px;
+    text-decoration: none; font-weight: 700; font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .nav-donate:hover { background: var(--sun); color: var(--text); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #FDF6EE 0%, #FAE8D4 60%, #F4DCC0 100%);
+    padding: 5rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; line-height: 1.2;
+    color: var(--text); margin-bottom: 1rem;
+  }
+  .hero-text h1 span { color: var(--earth); }
+  .hero-text p { font-size: 1.1rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--earth); color: var(--white);
+    padding: 0.8rem 2rem; border-radius: 30px;
+    text-decoration: none; font-weight: 700;
+    font-size: 1rem; transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--sun); color: var(--text); transform: translateY(-2px); }
+  .btn-outline {
+    border: 2px solid var(--earth); color: var(--earth);
+    padding: 0.8rem 2rem; border-radius: 30px;
+    text-decoration: none; font-weight: 700;
+    font-size: 1rem; transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--earth); color: var(--white); transform: translateY(-2px); }
+  .hero-image {
+    background: var(--soft);
+    border-radius: 20px;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--sun);
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-image .children-art {
+    font-size: 5rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero-image p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--earth);
+    text-align: center;
+    padding: 0 1.5rem;
+    font-style: italic;
+  }
+  .decorative-dots {
+    position: absolute; top: 15px; right: 15px;
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 5px;
+  }
+  .decorative-dots span {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--sun); opacity: 0.5; display: block;
+  }
+
+  /* STATS */
+  .stats {
+    background: var(--earth);
+    padding: 3rem 2rem;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .stat-card { color: var(--white); }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 700;
+    color: var(--sun);
+  }
+  .stat-label { font-size: 0.95rem; opacity: 0.9; margin-top: 0.3rem; }
+
+  /* MISSION */
+  .mission {
+    padding: 5rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .section-tag {
+    background: var(--soft);
+    color: var(--earth);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  .mission h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--text);
+    margin-bottom: 1.2rem;
+  }
+  .mission p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.9;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* PILLARS */
+  .pillars {
+    background: var(--sky);
+    padding: 4rem 2rem;
+  }
+  .pillars h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .pillar-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.2s;
+    border-bottom: 4px solid var(--sun);
+  }
+  .pillar-card:hover { transform: translateY(-5px); }
+  .pillar-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .pillar-card h3 { font-size: 1.15rem; color: var(--text); margin-bottom: 0.5rem; }
+  .pillar-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+
+  /* QUOTE */
+  .quote-strip {
+    background: var(--sun);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .quote-strip blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--text);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .quote-strip cite {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-style: normal;
+    font-size: 0.9rem;
+    color: var(--earth);
+    margin-top: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  /* CTA */
+  .cta {
+    padding: 5rem 2rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .cta p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; font-size: 1.05rem; }
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    background: var(--text);
+    color: #D4B896;
+    padding: 3rem 2rem 1.5rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto 2rem;
+  }
+  .footer-brand p { font-size: 0.9rem; line-height: 1.7; margin-top: 0.8rem; color: #A08870; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--sun); }
+  footer h4 { font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--sun); margin-bottom: 1rem; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 0.5rem; }
+  footer ul li a { text-decoration: none; color: #A08870; font-size: 0.9rem; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--sun); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6A5040;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .heart { color: var(--earth); }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    .hero-text h1 { font-size: 2rem; }
+    .stats-grid { grid-template-columns: repeat(2,1fr); }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+  }
+
+  .photo-section {
+   
+     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 20px; 
+    padding: 20px;
+}
+
+
+.photo-section img {
+    
+width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images don't stretch */
+    border-radius: 8px; /* Optional styling */
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🌻</div>
+    <div class="logo-text">Joyous Children's Home
+      <span>Malindi, Kenya</span>
+    </div>
+  </a>
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="children.html">Our Children</a></li>
+    <li><a href="getinvolved.html">Get Involved</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="donate.html" class="nav-donate">Donate Now</a>
+</nav>
+
+<!-- HERO -->
+<section style="background: linear-gradient(135deg, #FDF6EE 0%, #FAE8D4 100%);">
+  <div class="hero">
+    <div class="hero-text">
+      <div class="section-tag">🌍 Malindi, Kenya</div>
+      <h1>Every Child Deserves a <span>Joyful</span> Home</h1>
+      <p>We are a family — nurturing, protecting, and empowering children in Kenya through love, education, and hope. Every smile here is a story of resilience.</p>
+      <div class="hero-btns">
+        <a href="donate.html" class="btn-primary">Support a Child</a>
+        <a href="about.html" class="btn-outline">Our Story</a>
+      </div>
+
+      <section class="photo-section">
+        <div>
+          <img src="./images/chill.jpeg" alt="">
+        </div>
+
+        <div>
+          <img src="./images/kk.jpeg" alt="">
+        </div>
+      </section>
+    </div>
+    <div class="hero-image">
+      <div class="decorative-dots">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="children-art">🧒🏾👧🏿🧒🏽</div>
+      <p>"Where every child finds<br>love, laughter, and belonging"</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Children Sheltered</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">10+</div>
+      <div class="stat-label">Years of Service</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">98%</div>
+      <div class="stat-label">School Enrollment</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">20+</div>
+      <div class="stat-label">Alumni Thriving</div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission">
+  <div class="section-tag">Our Mission</div>
+  <h2>Rooted in Love, Growing with Purpose</h2>
+  <p>At Joyous Children's Home, we believe that every child — regardless of background — deserves safety, dignity, education, and love. We walk alongside Kenya's most vulnerable children, not just caring for their needs today, but building their foundations for tomorrow.</p>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <h2>How We Care</h2>
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div class="pillar-icon">🏠</div>
+      <h3>Safe Shelter</h3>
+      <p>A warm, secure home where children feel truly safe, valued, and part of a loving family.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">📚</div>
+      <h3>Quality Education</h3>
+      <p>All children are enrolled in school and supported with tutoring, mentorship, and learning materials.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">💛</div>
+      <h3>Emotional Wellbeing</h3>
+      <p>Professional counselling and community support help every child heal, grow, and thrive.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">🌱</div>
+      <h3>Life Skills</h3>
+      <p>We equip older children with vocational training and skills to stand strong in the world.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">🎨</div>
+      <h3>Arts & Play</h3>
+      <p>Creative expression, music, and play are at the heart of how children at Joyous grow and heal.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">🤝</div>
+      <h3>Community Ties</h3>
+      <p>We work hand-in-hand with local families and organisations to keep children connected to their roots.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE STRIP -->
+<section class="quote-strip">
+  <blockquote>
+    "These children didn't lose their future — we just needed to find it together."
+  </blockquote>
+  <cite>— Mama Joyce Ndaa, Founder, Joyous Children's Home</cite>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="section-tag">Make a Difference</div>
+  <h2>You Can Change a Child's Story</h2>
+  <p>Whether you donate, volunteer, or simply spread the word — your support brings light into a child's world. Every contribution, no matter how small, creates lasting joy.</p>
+  <div class="cta-btns">
+    <a href="donate.html" class="btn-primary">Donate Today</a>
+    <a href="getinvolved.html" class="btn-outline">Get Involved</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">🌻 Joyous Children's Home</div>
+      <p>Nurturing Joyous children with love, warmth, and boundless hope since 2012. A place where joy is not just a name — it is a way of life.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="children.html">Our Children</a></li>
+        <li><a href="getinvolved.html">Get Involved</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="getinvolved.html">Volunteer</a></li>
+        <li><a href="getinvolved.html">Sponsor a Child</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Malindi, Kenya</a></li>
+        <li><a href="#">+254721410537</a></li>
+        <li><a href="#">kalamajoyce2016@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Joyous Children's Home, Kenya. Made with <span class="heart">♥</span> for every child.
+  </div>
+</footer>
+
+</body>
+</html>

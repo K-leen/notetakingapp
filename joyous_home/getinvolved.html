@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Involved – Joyous Children's Home Kenya</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sun: #F4A724; --earth: #C0622A; --grass: #4A7C3F;
+    --sky: #E8F4F0; --cream: #FDF6EE; --soft: #FAE8D4;
+    --text: #2C1A0E; --muted: #7A5C44; --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--text); }
+  nav { background: var(--white); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07); position: sticky; top: 0; z-index: 100; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon { width: 44px; height: 44px; background: var(--sun); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text); line-height: 1.2; }
+  .logo-text span { display: block; font-size: 0.7rem; font-family: 'Nunito', sans-serif; color: var(--muted); font-weight: 600; letter-spacing: 1px; }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; }
+  nav ul a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+  nav ul a:hover, nav ul a.active { color: var(--earth); }
+  .nav-donate { background: var(--earth); color: var(--white); padding: 0.5rem 1.2rem; border-radius: 25px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+  .section-tag { background: var(--soft); color: var(--earth); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem; }
+
+  .page-hero { background: linear-gradient(135deg, #E8F4F0 0%, var(--soft) 100%); padding: 5rem 2rem 4rem; text-align: center; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--text); margin-bottom: 1rem; }
+  .page-hero p { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+
+  /* WAYS TO HELP */
+  .ways { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .ways h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--text); text-align: center; margin-bottom: 2.5rem; }
+  .ways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .way-card {
+    background: var(--white); border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--soft); transition: transform 0.2s;
+  }
+  .way-card:hover { transform: translateY(-5px); }
+  .way-header {
+    padding: 2.5rem; text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .w1 .way-header { background: var(--soft); }
+  .w2 .way-header { background: var(--sky); }
+  .w3 .way-header { background: #EAF4E8; }
+  .w4 .way-header { background: #EAF0F8; }
+  .w5 .way-header { background: #F8EAF0; }
+  .w6 .way-header { background: #F4F0E8; }
+  .way-icon { font-size: 3rem; margin-bottom: 0.8rem; }
+  .way-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text); }
+  .way-body { padding: 1.5rem 2rem 2rem; }
+  .way-body p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .way-features { list-style: none; margin-bottom: 1.5rem; }
+  .way-features li { font-size: 0.9rem; color: var(--muted); padding: 0.3rem 0; }
+  .way-features li::before { content: '✓ '; color: var(--grass); font-weight: 700; }
+  .way-btn {
+    display: block; text-align: center; padding: 0.7rem 1.5rem;
+    background: var(--earth); color: var(--white); border-radius: 25px;
+    text-decoration: none; font-weight: 700; font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .way-btn:hover { background: var(--sun); color: var(--text); }
+  .way-btn.outline { background: transparent; border: 2px solid var(--earth); color: var(--earth); }
+  .way-btn.outline:hover { background: var(--earth); color: var(--white); }
+
+  /* VOLUNTEER FORM */
+  .volunteer-section { background: var(--sky); padding: 5rem 2rem; }
+  .volunteer-section h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--text); text-align: center; margin-bottom: 2.5rem; }
+  .volunteer-container { max-width: 700px; margin: 0 auto; background: var(--white); border-radius: 20px; padding: 3rem; border: 1px solid var(--soft); }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.8rem 1rem;
+    border: 1.5px solid var(--soft); border-radius: 10px;
+    font-family: 'Nunito', sans-serif; font-size: 1rem;
+    color: var(--text); background: var(--cream);
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--earth); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .skills-checkboxes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin-top: 0.5rem; }
+  .skill-check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--muted); cursor: pointer; }
+  .skill-check input[type="checkbox"] { accent-color: var(--earth); width: 16px; height: 16px; }
+  .submit-btn { width: 100%; padding: 1rem; background: var(--earth); color: var(--white); border: none; border-radius: 30px; font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; margin-top: 0.5rem; }
+  .submit-btn:hover { background: var(--sun); color: var(--text); }
+
+  /* PARTNERS */
+  .partners { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; text-align: center; }
+  .partners h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--text); margin-bottom: 1rem; }
+  .partners p { color: var(--muted); margin-bottom: 3rem; font-size: 1.05rem; }
+  .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .partner-logo { background: var(--white); border-radius: 14px; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--soft); min-height: 100px; }
+  .partner-logo span { font-size: 2rem; margin-bottom: 0.5rem; }
+  .partner-logo p { font-size: 0.8rem; color: var(--muted); font-weight: 700; text-align: center; }
+
+  footer { background: var(--text); color: #D4B896; padding: 2rem; text-align: center; }
+  footer a { color: var(--sun); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .ways-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .skills-checkboxes { grid-template-columns: repeat(2, 1fr); }
+    .partners-grid { grid-template-columns: repeat(2,1fr); }
+    .page-hero h1 { font-size: 2rem; }
+    nav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🌻</div>
+    <div class="logo-text">Joyous Children's Home <span>Malindi, Kenya</span></div>
+  </a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="children.html">Our Children</a></li>
+    <li><a href="getinvolved.html" class="active">Get Involved</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="donate.html" class="nav-donate">Donate Now</a>
+</nav>
+
+<section class="page-hero">
+  <div class="section-tag">Join the Family</div>
+  <h1>Get Involved</h1>
+  <p>There are so many ways to show up for a child who needs you. Whether you have time, skills, resources, or simply love to share — there is a place for you at Joyous.</p>
+</section>
+
+<!-- WAYS -->
+<section class="ways">
+  <h2>How You Can Help</h2>
+  <div class="ways-grid">
+    <div class="way-card w1">
+      <div class="way-header">
+        <div class="way-icon">💛</div>
+        <h3>Donate</h3>
+      </div>
+      <div class="way-body">
+        <p>A financial gift — however small — provides meals, schooling, and care for our children every single day.</p>
+        <ul class="way-features">
+          <li>One-time or monthly giving</li>
+          <li>M-Pesa, card, bank transfer</li>
+          <li>Sponsor a specific child</li>
+        </ul>
+        <a href="donate.html" class="way-btn">Donate Now</a>
+      </div>
+    </div>
+    <div class="way-card w2">
+      <div class="way-header">
+        <div class="way-icon">🤝</div>
+        <h3>Volunteer</h3>
+      </div>
+      <div class="way-body">
+        <p>Bring your skills and time to Joyous — teaching, mentoring, cooking, building, or just playing with the kids.</p>
+        <ul class="way-features">
+          <li>Local & international volunteers</li>
+          <li>Weekend or long-term stays</li>
+          <li>Structured roles available</li>
+        </ul>
+        <a href="#volunteer-form" class="way-btn">Apply to Volunteer</a>
+      </div>
+    </div>
+    <div class="way-card w3">
+      <div class="way-header">
+        <div class="way-icon">📦</div>
+        <h3>Donate Goods</h3>
+      </div>
+      <div class="way-body">
+        <p>We always need school supplies, clothing, toys, books, and household items. Drop them off or arrange a delivery.</p>
+        <ul class="way-features">
+          <li>School supplies & stationery</li>
+          <li>Children's clothing (all ages)</li>
+          <li>Books, games, sporting gear</li>
+        </ul>
+        <a href="contact.html" class="way-btn outline">Contact Us</a>
+      </div>
+    </div>
+    <div class="way-card w4">
+      <div class="way-header">
+        <div class="way-icon">🎓</div>
+        <h3>Mentor a Teen</h3>
+      </div>
+      <div class="way-body">
+        <p>Our older children (14–18) benefit enormously from career mentors who share their experience and vision for the future.</p>
+        <ul class="way-features">
+          <li>Monthly sessions, online or in-person</li>
+          <li>Career, business, or creative fields</li>
+          <li>Life skills and goal-setting</li>
+        </ul>
+        <a href="#volunteer-form" class="way-btn">Become a Mentor</a>
+      </div>
+    </div>
+    <div class="way-card w5">
+      <div class="way-header">
+        <div class="way-icon">🏢</div>
+        <h3>Corporate Partnership</h3>
+      </div>
+      <div class="way-body">
+        <p>Partner with us as an organisation — through employee volunteering, CSR donations, or sponsorship programmes.</p>
+        <ul class="way-features">
+          <li>Employee volunteering days</li>
+          <li>Annual CSR sponsorship</li>
+          <li>Brand visibility & reporting</li>
+        </ul>
+        <a href="contact.html" class="way-btn outline">Partner With Us</a>
+      </div>
+    </div>
+    <div class="way-card w6">
+      <div class="way-header">
+        <div class="way-icon">📣</div>
+        <h3>Spread the Word</h3>
+      </div>
+      <div class="way-body">
+        <p>Share our story on social media, introduce us to a friend, or host a fundraiser in your community. Every voice matters.</p>
+        <ul class="way-features">
+          <li>Share on social media</li>
+          <li>Host a fundraising event</li>
+          <li>Tell a friend about us</li>
+        </ul>
+        <a href="#" class="way-btn outline">Share Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER FORM -->
+<section class="volunteer-section" id="volunteer-form">
+  <h2>Volunteer Application</h2>
+  <div class="volunteer-container">
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Your first name">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Your last name">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="0712 345 678">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Nationality / Location</label>
+        <input type="text" placeholder="Malindi, Kenya">
+      </div>
+      <div class="form-group">
+        <label>Availability</label>
+        <select>
+          <option>Weekends only</option>
+          <option>Weekdays only</option>
+          <option>Full-time (1+ months)</option>
+          <option>Flexible</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>How would you like to help?</label>
+      <div class="skills-checkboxes">
+        <label class="skill-check"><input type="checkbox"> Teaching / Tutoring</label>
+        <label class="skill-check"><input type="checkbox"> Sports & Coaching</label>
+        <label class="skill-check"><input type="checkbox"> Arts & Music</label>
+        <label class="skill-check"><input type="checkbox"> Healthcare</label>
+        <label class="skill-check"><input type="checkbox"> Counselling</label>
+        <label class="skill-check"><input type="checkbox"> IT & Technology</label>
+        <label class="skill-check"><input type="checkbox"> Cooking & Nutrition</label>
+        <label class="skill-check"><input type="checkbox"> Construction</label>
+        <label class="skill-check"><input type="checkbox"> Fundraising</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Tell us a little about yourself</label>
+      <textarea rows="4" placeholder="What brings you to Joyous Children's Home? Any relevant experience or special skills?"></textarea>
+    </div>
+    <button class="submit-btn">🌻 Submit My Application</button>
+  </div>
+</section>
+
+
+</section>
+
+<footer>
+  <p>🌻 Joyous Children's Home, Malindi Kenya &nbsp;|&nbsp; <a href="contact.html">Contact Us</a> &nbsp;|&nbsp; &copy; 2026</p>
+</footer>
+
+</body>
+</html>
